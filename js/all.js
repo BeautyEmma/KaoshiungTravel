@@ -2654,7 +2654,7 @@ function Jump(e) {
     var str =
       '<div class="feature">' +
       '<div class="pix"><img class="pix" src = ' + pic + '></div>' +
-      '<div class="pixcover"><p class="name">' + name + '</p>' +
+      '<div class="pixcover"><p class="name ellipsis">' + name + '</p>' +
       '<p class="zone">' + zone + '</p>' +
       '</div>' +
 
@@ -2736,7 +2736,7 @@ function QuickSearch(e) {
       var str2 =
         '<div class="feature">' +
         '<div class="pix"><img class="pix" src = ' + pic + '></div>' +
-        '<div class="pixcover"><p class="name">' + name + '</p>' +
+        '<div class="pixcover"><p class="name ellipsis">' + name + '</p>' +
         '<p class="zone">' + zone + '</p>' +
         '</div>' +
 
@@ -2785,7 +2785,7 @@ function NextPage() {
     var str =
       '<div class="feature">' +
       '<div class="pix"><img class="pix" src = ' + pic + '></div>' +
-      '<div class="pixcover"><p class="name">' + name + '</p>' +
+      '<div class="pixcover"><p class="name ellipsis">' + name + '</p>' +
       '<p class="zone">' + zone + '</p>' +
       '</div>' +
 

@@ -164,6 +164,12 @@ h1 {
     font-weight: bold;
 }
 
+.titleh2{
+    width: 550px;
+    color: white;
+    margin: 0 auto;
+}
+
 .SelectSection {
     width: 80%;
     margin: 0 auto;

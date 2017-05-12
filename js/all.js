@@ -2699,7 +2699,7 @@ function Jump(e) {
 
   console.log('testary總共長度 : ' + testary.length);
   if(testary.length <= 0){
-  var sorry = '<h2 class="nodata">選擇的地區沒有資料喔！</h2';
+  var sorry = '<h2>選擇的地區沒有資料喔！</h2';
   $('.features').append(sorry);
   sec.innerHTML = '';
       }

@@ -1,0 +1,384 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    /*font-family: 微軟正黑體;*/
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/*     reset結束      */
+
+.wrap {
+    width: 100%;
+    background-color: #F7F7F7;
+}
+
+
+/* ---------- header選單區 ---------- */
+
+.header {
+    height: 500px;
+    background-image: url(../img/the-urban-landscape-1698285.png);
+    background-attachment: fixed;
+    background-position: top center;
+    background-size: cover;
+}
+
+h1 {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 8%;
+    letter-spacing: 8px;
+    font-weight: bold;
+}
+
+.SelectSection {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#selection {
+    width: 500px;
+    height: 50px;
+    font-size: 20px;
+    margin-top: 10%;
+    background-color: rgba(255, 255, 255, 0.70);
+    border-radius: 5px;
+    border: 5px solid white;
+}
+
+.selector {
+    background-color: rgba(255, 255, 255, 0.88);
+}
+
+
+/* ---------- hot熱門行政區 ---------- */
+
+.hot {
+    width: 800px;
+    height: 120px;
+    margin: -5% auto;
+    text-align: center;
+    box-shadow: 1px 1px 10px 0.3px;
+    position: relative;
+    z-index: 100px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 2%;
+}
+
+.hot .btn {
+    width: 130px;
+    height: 42px;
+    margin-right: 3%;
+    font-size: 20px;
+    margin-top: 1%;
+}
+
+.section {
+    text-align: center;
+}
+
+
+/* ---------- content內容區 ---------- */
+
+.content {
+    width: 100%;
+    height: auto;
+    background-color: #F7F7F7;
+    margin-top: 10%;
+}
+
+
+/*巢狀開始*/
+
+.features {
+    width: 80%;
+    margin-left: 15%;
+    display: inline-block;
+}
+
+.feature {
+    width: 480px;
+    height: 320px;
+    background-color: white;
+    margin: 2% 5%;
+    float: left;
+    box-shadow: 1px 1px 10px 0px;
+    border-radius: 5px;
+}
+
+.pix {
+    width: 480px;
+    height: 170px;
+    background-color: black;
+}
+
+.pixcover {
+    color: white;
+    float: left;
+    position: relative;
+    font-size: 20px;
+    margin-top: -35.5%;
+    padding-top: 27%;
+    padding-left: 4%;
+    height: 170px;
+    width: 100%;
+    
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 70%,rgba(0,0,0,0.6) 100%);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 70%,rgba(0,0,0,0.7) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 70%,rgba(0,0,0,0.7) 100%);
+    
+}
+
+.name{
+    width: 250px;
+    float: left;
+}
+.zone{
+    width: 100px;
+    float: right;
+}
+
+
+
+.pix img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    float: left
+}
+
+.icon-clock {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin: 3% 2% 0 3%;
+    background-image: url("../img/icons_clock.png");
+    border-style: none;
+    border-width: 0;
+    border: none;
+}
+
+.icon-add {
+    width: 16px;
+    height: 20px;
+    float: left;
+    margin: 1% 2% 0 3%;
+    background-image: url("../img/icons_pin.png");
+}
+
+.icon-tel {
+    width: 12px;
+    height: 21px;
+    float: left;
+    margin: 1% 3% 0 3.5%;
+    background-image: url("../img/icons_phone.png");
+}
+
+.icon-tag {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 0 2.5%;
+    background-image: url("../img/icons_tag.png");
+    float: right;
+}
+
+.info {
+    float: right;
+    font-size: 16px;
+    margin-right: 3%;
+}
+
+.intro {
+    margin-top: 1%;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 3%;
+    padding-right: 5%;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.nodata{
+    padding-left: 32%;
+}
+
+
+
+/* ---------- pages 頁碼區 ---------- */
+
+.pages {
+    height: 40px;
+    width: 200px;
+    /*background-color: #F7F7F7;*/
+    margin: 0 auto;
+    font-size: 25px;
+    text-align: center;
+    display: none;
+}
+
+
+/* ---------- footer 頁尾區 ---------- */
+
+.footer {
+    height: 120px;
+    background-color: #559AC8;
+    text-align: center;
+    position: relative;
+}
+
+#FooterGov {
+    color: white;
+    padding-top: 2%;
+    font-size: 18px;
+}
+
+#FooterRss {
+    color: #E1C976;
+    font-size: 18px;
+}

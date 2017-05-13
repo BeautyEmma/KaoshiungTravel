@@ -381,3 +381,19 @@ h3 {
     color: #E1C976;
     font-size: 18px;
 }
+
+/* ---------- totop 滾到最上頁 ---------- */
+
+.totop{
+    width: 30px;
+    height: 30px;
+    border:1px solid black;
+    position: fixed;
+    right:50px;
+    bottom:50px;
+}
+
+
+
+
+

@@ -2604,29 +2604,30 @@ var data = [{
 
 //選擇器變動觸發
 var sel = document.getElementById('selection');
-//選擇器內容
-var val = document.querySelector('.selector');
-//區域名
+//顯示結果區域名
 var sec = document.querySelector('.section');
 //熱門區域
 var hot = document.querySelector('.hot');
 //下一頁
 var nex = document.querySelector('.nex');
 //儲存結果資料
-var testary = [];
+var strary = [];
+//上一頁
+var pre = document.querySelector('.previouspage');
 
 
-sel.addEventListener('change', Jump, false);
+sel.addEventListener('change', DropdownSearch, false);
 hot.addEventListener('click', QuickSearch, false);
 nex.addEventListener('click', NextPage, false);
+pre.addEventListener('click', PreviousePage, false);
 
-function Jump(e) {
+function DropdownSearch(e) {
 
   //清空內容
   $('.features').html('');
 
-  //清空testary
-  testary = [];
+  //清空strary
+  strary = [];
 
   //點擊畫面往下移動
   $('html,body').animate({
@@ -2635,6 +2636,7 @@ function Jump(e) {
   e.preventDefault();
 
   $('.pages').hide();
+  $('.previouspage').hide();
 
   //抓出選擇器內的內容
   var con = document.getElementById('selection').value;
@@ -2674,15 +2676,15 @@ function Jump(e) {
     if (con === data[i].Zone) {
       sec.innerHTML = '<h2>' + zone + '</h2>';
 
-      testary.push(str);
+      strary.push(str);
 
-      
 
-      if(testary.length>10){
+
+      if (strary.length > 10) {
         $('.pages').show();
       }
 
-      if (testary.length < 11) {
+      if (strary.length < 11) {
         $('.features').append(str);
       } // end of if testaray.length<11
     } // end of if con = data[i].zone
@@ -2697,16 +2699,16 @@ function Jump(e) {
 
   } //end of for
 
-  console.log('testary總共長度 : ' + testary.length);
-  if(testary.length <= 0){
-  var sorry = '<h2>選擇的地區沒有資料喔！</h2';
-  $('.features').append(sorry);
-  sec.innerHTML = '';
-      }
+  
+  if (strary.length <= 0) {
+    var sorry = '<h2>選擇的地區沒有資料喔！</h2';
+    $('.features').append(sorry);
+    sec.innerHTML = '';
+  }
 
-} //end of jump function
+} //end of DropdownSearch function
 
-//熱門區域點擊自動搜尋(還沒複製到最新的)
+//熱門區域點擊自動搜尋(以更新至最新的)
 function QuickSearch(e) {
 
   if (e.srcElement.innerHTML === '苓雅區' || e.srcElement.innerHTML === '三民區' || e.srcElement.innerHTML === '新興區' || e.srcElement.innerHTML === '左營區') {
@@ -2714,14 +2716,23 @@ function QuickSearch(e) {
     //清空內容
     $('.features').html('');
 
+    //清空strary
+    strary = [];
+
     //點擊畫面往下移動
     $('html,body').animate({
       scrollTop: $('.content').offset().top
     }, 800);
     e.preventDefault();
 
+    $('.pages').hide();
+    $('.previouspage').hide();
+
     //抓出選擇內容
     var con = e.srcElement.innerHTML;
+    //把選擇內容也丟進dropdownlist(為了下一頁)
+    sel.value = con;
+
 
     for (var i = 0; i < data.length; i++) {
       // 需要欄位有：Picture1(照片)、Name(名稱)、Opentime(開放時間)、Add(地址)、Tel(電話)、Zone(區域)、Ticketinfo(免費參觀)
@@ -2733,7 +2744,7 @@ function QuickSearch(e) {
       var zone = data[i].Zone;
       var info = data[i].Ticketinfo;
 
-      var str2 =
+      var str =
         '<div class="feature">' +
         '<div class="pix"><img class="pix" src = ' + pic + '></div>' +
         '<div class="pixcover"><p class="name ellipsis">' + name + '</p>' +
@@ -2749,28 +2760,44 @@ function QuickSearch(e) {
         '<div class="icon-tel"></div>' +
         '<p class="intro ellipsis">' + tel + '</p>' +
 
-        '<p class="info">' + info + '</p><div class="icon-tag"></div>';
+        '<p class="info">' + info + '</p>' +
+        '<div class="icon-tag"></div>';
+
 
       if (con === data[i].Zone) {
-        //區域名出現
         sec.innerHTML = '<h2>' + zone + '</h2>';
-        $('.features').append(str2);
-      } // end of if
+
+        strary.push(str);
+
+        if (strary.length > 10) {
+          $('.pages').show();
+        }
+
+        if (strary.length < 11) {
+          $('.features').append(str);
+          $('.pages').hide();
+        } // end of if testaray.length<11
+      } // end of if con = data[i].zone
     } //end of for
   } //end of first if
-
 } // end of QuickSearch function
 
+//陣列超過十筆 - 下一頁
 function NextPage() {
 
   //清空內容
   $('.features').html('');
-  console.log('NextPage run');
-  //清空testary
-  testary = [];
+  //清空strary
+  strary = [];
 
   //抓出選擇器內的內容
   var con = document.getElementById('selection').value;
+
+  //隱藏下一頁
+  $('.pages').hide();
+
+  //出現上一頁
+  $('.previouspage').show();
 
   for (var i = 0; i < data.length; i++) {
     // 需要欄位有：Picture1(照片)、Name(名稱)、Opentime(開放時間)、Add(地址)、Tel(電話)、Zone(區域)、Ticketinfo(免費參觀)
@@ -2805,11 +2832,95 @@ function NextPage() {
     if (con === data[i].Zone) {
       sec.innerHTML = '<h2>' + zone + '</h2>';
 
-      testary.push(str);
+      strary.push(str);
 
-      if (testary.length > 10) {
+      if (strary.length > 10) {
         $('.features').append(str);
       } // end of if testaray.length<11
     } // end of if con = data[i].zone
   } //end of for
 } // end of nex
+
+//回到前一頁
+function PreviousePage() {
+  //清空內容
+  $('.features').html('');
+
+  //清空strary
+  strary = [];
+
+  // //點擊畫面往下移動
+  // $('html,body').animate({
+  //   scrollTop: $('.content').offset().top
+  // }, 800);
+
+  $('.pages').hide();
+  $('.previouspage').hide();
+
+  //抓出選擇器內的內容
+  var con = document.getElementById('selection').value;
+
+
+
+  for (var i = 0; i < data.length; i++) {
+    // 需要欄位有：Picture1(照片)、Name(名稱)、Opentime(開放時間)、Add(地址)、Tel(電話)、Zone(區域)、Ticketinfo(免費參觀)
+    var pic = data[i].Picture1;
+    var name = data[i].Name;
+    var open = data[i].Opentime;
+    var add = data[i].Add;
+    var tel = data[i].Tel;
+    var zone = data[i].Zone;
+    var info = data[i].Ticketinfo;
+
+    var str =
+      '<div class="feature">' +
+      '<div class="pix"><img class="pix" src = ' + pic + '></div>' +
+      '<div class="pixcover"><p class="name ellipsis">' + name + '</p>' +
+      '<p class="zone">' + zone + '</p>' +
+      '</div>' +
+
+      '<div class="icon-clock"></div>' +
+      '<p class="intro ellipsis">' + open + '</p>' +
+
+      '<div class="icon-add"></div>' +
+      '<p class="intro ellipsis">' + add + '</p>' +
+
+      '<div class="icon-tel"></div>' +
+      '<p class="intro ellipsis">' + tel + '</p>' +
+
+      '<p class="info">' + info + '</p>' +
+      '<div class="icon-tag"></div>';
+
+
+    if (con === data[i].Zone) {
+      sec.innerHTML = '<h2>' + zone + '</h2>';
+
+      strary.push(str);
+
+
+
+      if (strary.length > 10) {
+        $('.pages').show();
+      }
+
+      if (strary.length < 11) {
+        $('.features').append(str);
+      } // end of if testaray.length<11
+    } // end of if con = data[i].zone
+
+
+    // 標準
+    // if (con === data[i].Zone) {
+    //   sec.innerHTML = '<h2>' + zone + '</h2>';
+    //   $('.features').append(str);
+    // } // end of if
+
+
+  } //end of for
+
+  if (strary.length <= 0) {
+    var sorry = '<h2>選擇的地區沒有資料喔！</h2';
+    $('.features').append(sorry);
+    sec.innerHTML = '';
+  }
+}

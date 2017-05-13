@@ -352,7 +352,7 @@ h3 {
 
 /* ---------- pages 頁碼區 ---------- */
 
-.pages {
+.pages, .previouspage {
     height: 40px;
     width: 200px;
     /*background-color: #F7F7F7;*/
@@ -361,7 +361,6 @@ h3 {
     text-align: center;
     display: none;
 }
-
 
 /* ---------- footer 頁尾區 ---------- */
 

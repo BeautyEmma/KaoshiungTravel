@@ -2614,13 +2614,18 @@ var nex = document.querySelector('.nex');
 var strary = [];
 //上一頁
 var pre = document.querySelector('.previouspage');
+//往上滑
+var gotop = document.querySelector('.totop');
 
 
 sel.addEventListener('change', DropdownSearch, false);
 hot.addEventListener('click', QuickSearch, false);
 nex.addEventListener('click', NextPage, false);
 pre.addEventListener('click', PreviousePage, false);
+gotop.addEventListener('click', ScrollGoTop, false);
 
+
+//清單區域搜尋
 function DropdownSearch(e) {
 
   //清空內容
@@ -2699,7 +2704,7 @@ function DropdownSearch(e) {
 
   } //end of for
 
-  
+
   if (strary.length <= 0) {
     var sorry = '<h2>選擇的地區沒有資料喔！</h2';
     $('.features').append(sorry);
@@ -2708,7 +2713,7 @@ function DropdownSearch(e) {
 
 } //end of DropdownSearch function
 
-//熱門區域點擊自動搜尋(以更新至最新的)
+//熱門區域點擊自動搜尋
 function QuickSearch(e) {
 
   if (e.srcElement.innerHTML === '苓雅區' || e.srcElement.innerHTML === '三民區' || e.srcElement.innerHTML === '新興區' || e.srcElement.innerHTML === '左營區') {
@@ -2923,4 +2928,16 @@ function PreviousePage() {
     $('.features').append(sorry);
     sec.innerHTML = '';
   }
+}
+
+//滾到最上面
+function ScrollGoTop() {
+  //  點擊畫面往上移動
+  $('html,body').animate({
+    scrollTop: $('.content').offset().top
+  }, 800);
+
+
+
+
 }
